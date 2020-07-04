@@ -1,0 +1,29 @@
+#pragma gcc optimize("Ofast,no-stack-protector,tune=native")
+#pragma gcc optimize("sse,sse2,sse3,sse4,ssse3")
+// #pragma gcc optimize("O3")
+#pragma gcc optimize("abm,mmx,avx,avx2,unroll-loops,fast-math,section-anchors")
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define vec vector
+#define vec_i vector<int>
+#define vec_c vector<char>
+#define vec_s vector<string>
+#define main int main()
+
+int rec(int n, int last) {
+  int cnt = 0;
+
+  if (n ==  0) return 1;
+  for (int i = 1; i <= min(n, last); i++) cnt += rec(n - i, i);
+
+  return cnt;
+}
+
+main {
+  int n;
+  cin >> n;
+  cout << rec(n, n);
+}
